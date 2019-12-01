@@ -1,0 +1,30 @@
+{
+    "name": "thinkwinds/framework",
+    "description": "ThinkWinds Laravel Framework",
+    "keywords": ["thinkwinds", "laravel", "bbs", "cms", "sns"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "ThinkWind",
+            "email": "info@thinkwinds.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.1.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Thinkwinds\\Framework\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Thinkwinds\\Framework\\ThinkwindsServiceProvider"
+            ],
+            "aliases": {
+                "Thinkwinds": "Thinkwinds\\Framework\\Facades\\Thinkwinds"
+            }
+        }
+    }
+}
