@@ -1,0 +1,1 @@
+{!! tw_lang('thinkwinds::manage.email.test.content') !!}

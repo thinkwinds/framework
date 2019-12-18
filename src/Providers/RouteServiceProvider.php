@@ -1,5 +1,9 @@
 <?php 
-
+/**
+ * @author thinkwinds <info@thinkwinds.com>
+ * @copyright ©2020-2021 thinkwinds.com
+ * @license http://www.thinkwinds.com
+ */
 namespace Thinkwinds\Framework\Providers;
 
 use Illuminate\Support\Facades\Route;
@@ -24,6 +28,7 @@ class RouteServiceProvider extends ServiceProvider
     public function boot()
     {
         //
+        Route::pattern('id', '[0-9]+'); //自定类型
         parent::boot();
     }
 
@@ -36,6 +41,7 @@ class RouteServiceProvider extends ServiceProvider
     {
         $this->mapWebRoutes();
         $this->mapApiRoutes();
+        $this->mapOpenRoutes();
     }
 
     /**
@@ -66,10 +72,24 @@ class RouteServiceProvider extends ServiceProvider
     {
         Route::group([
             'middleware' => 'api',
-            'namespace'  => $this->namespace,
-            'prefix'     => 'api',
+            'namespace'  => $this->namespace.'\Api',
+            'domain'     => config('thinkwinds.apiDomain') ? config('thinkwinds.apiDomain') : env('APP_URL'),
+            'prefix'     => config('thinkwinds.apiDomain') ? (config('thinkwinds.apiPrefix') ? config('thinkwinds.apiPrefix') : '') : (config('thinkwinds.apiPrefix') ? config('thinkwinds.apiPrefix') : 'api'),
         ], function ($router) {
              require __DIR__.'/../Routes/api.php';
+        });
+    }
+
+    //开放平台API
+    protected function mapOpenRoutes()
+    {
+        Route::group([
+            'middleware' => 'api',
+            'namespace'  => $this->namespace.'\Open',
+            'prefix'     => config('open.apiDomain') ? config('open.apiDomain') : env('APP_URL'),
+            'prefix'     => config('open.apiDomain') ? 'api/cms' : 'open/api/cms',
+        ], function ($router) {
+            require __DIR__.'/../Routes/open.php';
         });
     }
 }

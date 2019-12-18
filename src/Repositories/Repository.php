@@ -1,14 +1,13 @@
 <?php
 /**
- * @author huasituo <info@huasituo.com>
- * @copyright ©2016-2100 huasituo.com
- * @license http://www.huasituo.com
+ * @author thinkwinds <info@thinkwinds.com>
+ * @copyright ©2020-2021 thinkwinds.com
+ * @license http://www.thinkwinds.com
  */
 namespace Thinkwinds\Framework\Repositories;
 
-use Thinkwinds\Framework\Contracts\Repository as RepositoryContract;
-
 use Illuminate\Config\Repository as Config;
+use Thinkwinds\Framework\Contracts\Repository as RepositoryContract;
 
 class Repository implements RepositoryContract
 {

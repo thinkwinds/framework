@@ -1,125 +1,96 @@
 <?php
-
+/**
+ * @author thinkwinds <info@thinkwinds.com>
+ * @copyright ©2020-2021 thinkwinds.com
+ * @license http://www.thinkwinds.com
+ */
 return [
     /*
     |--------------------------------------------------------------------------
     | Version
     |--------------------------------------------------------------------------
     */
-    'version'=>'1.0.0',
+	'version'=>'1.0.0',
     /*
     |--------------------------------------------------------------------------
-    | Hook
+    | copys
     |--------------------------------------------------------------------------
     */
-    'default'=> [
-        'hookList'=>[
-            's_test_arr'=>[
-                'name'=>'s_test_arr', 
-                'description'=>'测试数组返回钩子', 
-                'document'=>'@param array
-@return array', 
-                'module'=>'system'
-            ],
-            's_test_html'=>[
-                'name'=>'s_test_html', 
-                'description'=>'测试html输出钩子', 
-                'document'=>'@param no
-@return html', 
-                'module'=>'system'
-            ],
-            's_manage_menu'=>[
-                'name'=>'s_manage_menu', 
-                'description'=>'管理中心菜单导航', 
-                'document'=>'@param array
-@return array', 
-                'module'=>'system'
-            ],
-            's_common_role_uri'=>[
-                'name'=>'s_common_role_uri', 
-                'description'=>'管理中心权限点', 
-                'document'=>'@param array
-@return array', 
-                'module'=>'system'
-            ],
-            's_cache'=>[
-                'name'=>'s_cache', 
-                'description'=>'缓存', 
-                'document'=>'', 
-                'module'=>'system'
-            ],
-            's_head'=>[
-                'name'=>'s_head', 
-                'description'=>'头部公共钩子，用于输出JS、css、html等代码在body开始前', 
-                'document'=>'@param no
-@return html', 
-                'module'=>'system'
-            ],
-            's_footer'=>[
-                'name'=>'s_footer', 
-                'description'=>'底部公共钩子，用于输出JS、css、html等代码在body结束前', 
-                'document'=>'@param no
-@return html', 
-                'module'=>'system'
-            ],
-        ],
-        'hookInject'=>[
-            's_test_arr'=>[
-                [
-                    'hook_name' => 's_test_arr',
-                    'alias' => 'hook1',
-                    'files' => 'Huasituo\Hook\Hooks',
-                    'class' => 'TestHook',
-                    'fun' => 'test1',
-                    'description'=>'',
-                ],
-                [
-                    'hook_name' => 's_test_arr',
-                    'alias' => 'hook2',
-                    'files' => 'Huasituo\Hook\Hooks',
-                    'class' => 'TestHook',
-                    'fun' => 'test2',
-                    'description'=>'',
-                ]
-            ],
-            's_test_html'=>[
-                [
-                    'hook_name' => 's_test_html',
-                    'alias' => 'hook1',
-                    'files' => 'Huasituo\Hook\Hooks',
-                    'class' => 'TestHook',
-                    'fun' => 'test3',
-                    'description'=>'',
-                ],
-                [
-                    'hook_name' => 's_test_html',
-                    'alias' => 'hook2',
-                    'files' => 'Huasituo\Hook\Hooks',
-                    'class' => 'TestHook',
-                    'fun' => 'test4',
-                    'description'=>'',
-                ]
-            ],
-            's_manage_menu'=>[
-                [
-                    'hook_name' => 's_manage_menu',
-                    'alias' => 'manage',
-                    'files' => 'Huasituo\Hook\Hooks',
-                    'class' => 'ConfigHook',
-                    'fun' => 'getManageMenu',
-                    'description'=>'',
-                ]
-            ],
-            's_common_role_uri'=>[
-                [
-                    'hook_name' => 's_common_role_uri',
-                    'alias' => 'manage',
-                    'files' => 'Huasituo\Hook\Hooks',
-                    'class' => 'ConfigHook',
-                    'fun' => 'getCommonRoleUri',
-                    'description'=>'',
-                ]
-            ]
-        ]
+    'copys'=>'2020',
+    /*
+    |--------------------------------------------------------------------------
+    | Name
+    |--------------------------------------------------------------------------
+    */
+    'name'=>'ThinkWinds',
+    /*
+    |--------------------------------------------------------------------------
+    | Website
+    |--------------------------------------------------------------------------
+    */
+    'website'=>'https://www.thinkwinds.com',
+    /*
+    |--------------------------------------------------------------------------
+    | res  https或http
+    |--------------------------------------------------------------------------
+    */
+    'resurl'=>'http://res.softgold.co/webui',
+    //'resurl'=> PHP_SAPI === 'cli' ? false : url('res'),
+    /*
+    |--------------------------------------------------------------------------
+    | wap res  https或http
+    |--------------------------------------------------------------------------
+    */
+    //'wapres'=>'http://res.wap.thinkwinds.com',
+    'wapres'=> PHP_SAPI === 'cli' ? false : url('wap/res'),
+    /*
+    |--------------------------------------------------------------------------
+    | api
+    |--------------------------------------------------------------------------
+    */
+    'apiDomain'=>env('HSTCMS_API_DOMAIN', ''),
+    /*
+    |--------------------------------------------------------------------------
+    | api prefix
+    |--------------------------------------------------------------------------
+    */
+    'apiPrefix'=>env('HSTCMS_API_PREFIX', ''),
+    /*
+    |--------------------------------------------------------------------------
+    | api sign
+    |--------------------------------------------------------------------------
+    */
+    'apiSign'=>env('HSTCMS_API_SIGN', true),
+    /*
+    |--------------------------------------------------------------------------
+    | crypt md5
+    |--------------------------------------------------------------------------
+    */
+    'crypt'=>env('HSTCMS_CRYPT', false),
+    /*
+    |--------------------------------------------------------------------------
+    | Manage
+    |--------------------------------------------------------------------------
+    */
+    'manage'=> [
+    	'route'=>[
+		    /*
+		    |--------------------------------------------------------------------------
+		    | Manage Route Domain
+		    |--------------------------------------------------------------------------
+		    */
+    		'domain'=> env('HSTCMS_MANAGE_ROUTE_DOMAIN', ''),
+		    /*
+		    |--------------------------------------------------------------------------
+		    | Manage Route Prefix
+		    |--------------------------------------------------------------------------
+		    */
+    		'prefix'=> env('HSTCMS_MANAGE_ROUTE_PREFIX', 'manage'),
+    	]
+    ],
+    'captcha'=>[
+        'width'=> env('CAPTCHA_WIDTH', 120),
+        'height'=> env('CAPTCHA_HEIGHT', 60),
+        'length'=> env('CAPTCHA_LENGTH', 5)
     ]
 ];

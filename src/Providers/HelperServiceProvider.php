@@ -1,5 +1,9 @@
 <?php 
-
+/**
+ * @author thinkwinds <info@thinkwinds.com>
+ * @copyright ©2020-2021 thinkwinds.com
+ * @license http://www.thinkwinds.com
+ */
 namespace Thinkwinds\Framework\Providers;
 
 use Illuminate\Filesystem\Filesystem;
